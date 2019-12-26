@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>js demo</title>
+		<style type="text/css">
+			#div3 { width: 100px; height: 100px; position: absolute; top: 0; left: 0; background-color: red; z-index: 10; }
+		</style>
+		<script type="text/javascript">
+			function changeContent() {
+				var div1 = document.getElementById("div1");
+				alert("HTML内容：" + div1.innerHTML);
+				alert("纯文本内容：" + div1.innerText);
+				div1.innerHTML = "这是一个 <em>div</em> 元素。";
+			}
+
+			function changeAttributes() {
+				var age = document.getElementById("age");
+				var img = document.getElementById("img1");
+
+				alert("您填写的年龄是：" + age.value);
+				alert("图片地址：" + img.src);
+
+				age.value = parseInt(age.value) + 10;
+				img.src = "g2.gif";
+			}
+
+			var left = 0, top = 0;
+
+			function move() {
+
+				setInterval(function(){
+					top += 50;
+					left += 50;
+					var div3 = document.getElementById("div3");
+					div3.style.top = top + "px";
+					div3.style.left = left + "px";
+				}, 100);
+				
+			}
+
+		</script>
+	</head>
+	<body onload="move()">
+		<div id="div1">This is a <strong>div</strong> element.</div>
+		<input type="button" value="获取div元素内容" onclick="changeContent()"  />
+		<div>
+			<label for="age">年龄：</label>
+			<input type="text" id="age" />
+			<br />
+			<img id="img1" src="g1.gif" />
+			<br />
+			<input type="button" value="获取和更改元素属性" onclick="changeAttributes()"  />
+		</div>
+		<div 
+			id="div2" 
+			style="width: 100px; height: 100px; margin: 50px; background-color: gray;"
+			onclick="this.style.backgroundColor='blue';"
+		>
+		</div>
+
+
+		<div id="div3"></div>
+	</body>
+</html>
